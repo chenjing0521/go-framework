@@ -1,7 +1,16 @@
 package main
 
-import "net/http"
+import (
+	"exercise/go-framework/App"
+	"exercise/go-framework/Context"
+	"exercise/go-framework/MiddleWares"
+)
 
 func main() {
-	http.ListenAndServe(":9502", nil)
+	app := App.NewApp()
+	app.AddMiddleware(MiddleWares.MiddlewareLoggerFunc)
+	app.RegisterFunc("GET", "/hello", func(ctx *Context.Context) {
+		ctx.WriteString("hello micro web")
+	})
+	app.Run()
 }
