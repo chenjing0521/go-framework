@@ -1,9 +1,15 @@
 package Route
 
 import (
-	"exercise/go-framework/Context"
+	"exercise/go-framework/Core/Context"
+	"exercise/go-framework/Core/Library/Common"
 	"strings"
 )
+
+//加载路由
+func init() {
+	Common.ListDir("/root/tmp/test.php")
+}
 
 // HandleFunc 请求处理函数
 type HandleFunc func(ctx *Context.Context)
@@ -17,12 +23,6 @@ type MyRouter struct {
 	RoutesConst map[string]HandleFunc
 	RoutesPath  []string
 	RoutesFunc  []HandleFunc
-}
-
-// Handle404 函数定义处理404响应，没有找到对应的资源。
-func Handle404(ctx *Context.Context) {
-	ctx.ResponseWriter.WriteHeader(404)
-	ctx.ResponseWriter.Write([]byte("404 Not Found"))
 }
 
 // Match 方法匹配一个Context的请求，实现Router接口。
@@ -50,4 +50,10 @@ func (r *MyRouter) RegisterFunc(method string, path string, handle HandleFunc) {
 	} else {
 		r.RoutesConst[path] = handle
 	}
+}
+
+// Handle404 函数定义处理404响应，没有找到对应的资源。
+func Handle404(ctx *Context.Context) {
+	ctx.ResponseWriter.WriteHeader(404)
+	ctx.ResponseWriter.Write([]byte("404 Not Found"))
 }

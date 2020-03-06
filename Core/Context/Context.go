@@ -1,7 +1,7 @@
 package Context
 
 import (
-	"exercise/go-framework/Log"
+	"exercise/go-framework/Core/Log"
 	"net/http"
 	"strings"
 )

@@ -11,6 +11,7 @@ import (
 type Logger interface {
 	Print(...interface{})
 	Printf(string, ...interface{})
+	WriteFile(fileName, content string)
 }
 
 //logger struct
@@ -30,4 +31,9 @@ func (l *MyLogger) Print(args ...interface{}) {
 //implement Logger function
 func (l *MyLogger) Printf(format string, args ...interface{}) {
 	l.Print(fmt.Sprintf(format, args...))
+}
+
+func (l *MyLogger) WriteFile(fileName, content string) {
+	//determine if the file exists
+
 }

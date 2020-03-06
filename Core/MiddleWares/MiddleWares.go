@@ -1,8 +1,8 @@
 package MiddleWares
 
 import (
-	"exercise/go-framework/Context"
-	"exercise/go-framework/Route"
+	"exercise/go-framework/Core/Context"
+	"exercise/go-framework/Core/Route"
 )
 
 type MiddlewareFunc func(Route.HandleFunc) Route.HandleFunc
