@@ -1,15 +1,18 @@
 package main
 
 import (
+	"exercise/go-framework/Core/App"
+	"exercise/go-framework/Core/Context"
+	"exercise/go-framework/Core/MiddleWares"
 	"fmt"
-	"go-framework/core/router"
-	"net/http"
 )
 
 func main() {
-	fmt.Println("start http server success")
-	err := http.ListenAndServe(":9502", router.AutoLoadRouter())
-	if err != nil {
-		fmt.Println("start http server error")
-	}
+	app := App.NewApp()
+	app.AddMiddleware(MiddleWares.MiddlewareLoggerFunc)
+	app.RegisterFunc("GET", "/hello", func(ctx *Context.Context) {
+		fmt.Println(123123123123123)
+		ctx.WriteString("hello micro web")
+	})
+	app.Run()
 }
