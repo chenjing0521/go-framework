@@ -2,6 +2,10 @@ package Index
 
 import "fmt"
 
+func init() {
+
+}
+
 type IndexController struct {
 }
 
