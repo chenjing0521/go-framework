@@ -1,11 +1,21 @@
 package Common
 
 import (
-	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
 )
+
+var workDir string
+var routePath []string
+
+func init() {
+	workPath, err := os.Getwd()
+	if err != nil {
+		log.Fatal(err)
+	}
+	workDir = workPath
+}
 
 //文件夹
 func FileExists(path string) (isExist bool, err error) {
@@ -20,14 +30,23 @@ func FileExists(path string) (isExist bool, err error) {
 }
 
 func ListDir(path string) []string {
-	if isExist, _ := FileExists(path); isExist == false {
-		return
+	osPathSep := string(os.PathSeparator)
+	listPath := workDir + osPathSep + path
+	if isExist, _ := FileExists(listPath); isExist == false {
+		log.Fatal("file is not exist")
 	}
-	fmt.Println(FileExists(path))
 
-	files, err := ioutil.ReadDir(path)
+	files, err := ioutil.ReadDir(listPath)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(files)
+
+	for _, v := range files {
+		childPathName := path + osPathSep + v.Name()
+		if v.IsDir() {
+			routePath = append(routePath, v.Name())
+			ListDir(childPathName)
+		}
+	}
+	return routePath
 }

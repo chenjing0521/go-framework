@@ -1,10 +1,10 @@
 package App
 
 import (
-	"exercise/go-framework/Core/Context"
-	"exercise/go-framework/Core/Log"
-	"exercise/go-framework/Core/MiddleWares"
-	"exercise/go-framework/Core/Route"
+	"go-framework/Core/Context"
+	"go-framework/Core/Log"
+	"go-framework/Core/MiddleWares"
+	"go-framework/Core/Route"
 	"net/http"
 )
 

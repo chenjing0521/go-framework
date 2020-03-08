@@ -1,15 +1,9 @@
 package Route
 
 import (
-	"exercise/go-framework/Core/Context"
-	"exercise/go-framework/Core/Library/Common"
+	"go-framework/Core/Context"
 	"strings"
 )
-
-//加载路由
-func init() {
-	Common.ListDir("/root/tmp/test.php")
-}
 
 // HandleFunc 请求处理函数
 type HandleFunc func(ctx *Context.Context)

@@ -1,10 +1,10 @@
 package main
 
 import (
-	"exercise/go-framework/Core/App"
-	"exercise/go-framework/Core/Context"
-	"exercise/go-framework/Core/MiddleWares"
 	"fmt"
+	"go-framework/Core/App"
+	"go-framework/Core/Context"
+	"go-framework/Core/MiddleWares"
 )
 
 func main() {
